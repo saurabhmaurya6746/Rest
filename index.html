@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Burger AR Menu</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="info-box">
+      <h1>🍔 Classic Cheeseburger</h1>
+      <p class="price">₹199</p>
+      <p class="desc">Juicy beef patty, melted cheese, fresh lettuce & tomato served on a toasted bun.</p>
+    </div>
+
+    <div class="scene-wrapper">
+      <a-scene embedded background="color: #fefefe" vr-mode-ui="enabled: true">
+        <a-assets>
+          <a-asset-item id="model1" src="assets/burger_tripo.glb"></a-asset-item>
+          <a-asset-item id="model2" src="assets/chaumin.glb"></a-asset-item>
+          <a-asset-item id="model3" src="assets/mc_double_burger.glb"></a-asset-item>
+          <a-asset-item id="model4" src="assets/pizza.glb"></a-asset-item>
+        </a-assets>
+
+        <!-- Lights wrapped in a parent entity to control per model -->
+        <a-entity id="dynamic-lights">
+          <a-entity id="ambientLight" light="type: ambient; intensity: 1.5"></a-entity>
+          <a-entity id="topLight" light="type: directional; intensity: 4; color: #ffffff" position="0 4 4"></a-entity>
+          <a-entity id="pointLight" light="type: point; intensity: 3; color: #ffffff" position="2 2 2"></a-entity>
+          <a-entity id="bottomLight" light="type: directional; intensity: 5; color: #ffffff" position="0 -4 4"></a-entity>
+        </a-entity>
+
+        <a-entity camera position="0 1.6 5"></a-entity>
+
+        <a-entity id="burger-container" position="0 0 -20" rotation="0 180 0">
+          <!-- Model gets injected here -->
+        </a-entity>
+      </a-scene>
+    </div>
+
+    <div class="button-wrapper">
+      <button id="leftBtn" class="rotate-btn">&#10094;</button>
+      <button id="rightBtn" class="rotate-btn">&#10095;</button>
+    </div>
+  </div>
+
+  <button id="exit-ar-btn" onclick="exitVR()">← Back</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
