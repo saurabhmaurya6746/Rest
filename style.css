@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.info-box {
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 1.5em;
+  color: #e91e63;
+}
+
+.desc {
+  color: #555;
+}
+
+.scene-wrapper {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  margin: 20px auto;
+  position: relative;
+}
+
+a-scene {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.button-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.rotate-btn {
+  font-size: 2em;
+  padding: 10px;
+  background: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+#exit-ar-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  display: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
