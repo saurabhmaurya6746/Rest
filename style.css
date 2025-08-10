@@ -1,70 +1,161 @@
+/* Reset-ish */
+* { box-sizing: border-box; }
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f2f2f2;
+  font-family: "Segoe UI", Roboto, system-ui, Arial, sans-serif;
+  background: #fafafa;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
 }
 
-.container {
+/* page wrap */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+/* header */
+.top-header {
+  background: linear-gradient(90deg,#e85b5b,#f08a5d);
+  color: #fff;
+  padding: 22px 0;
   text-align: center;
-  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
+.top-header h1 { margin: 0; font-size: 1.6rem; }
+.top-header .tag { margin: 6px 0 0; opacity: 0.95; }
 
-.info-box {
-  margin-bottom: 20px;
-}
-
-.price {
-  font-size: 1.5em;
-  color: #e91e63;
-}
-
-.desc {
-  color: #555;
-}
-
-.scene-wrapper {
+/* table */
+.menu-section { margin-top: 18px; }
+.menu-table {
   width: 100%;
-  max-width: 600px;
-  height: 400px;
-  margin: 20px auto;
-  position: relative;
-}
-
-a-scene {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #ccc;
+  border-collapse: collapse;
+  background: #fff;
   border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.menu-table thead th {
+  text-align: left;
+  padding: 14px 18px;
+  background: #f6f6f7;
+  font-weight: 600;
+  color: #444;
+}
+.menu-table td {
+  padding: 14px 18px;
+  vertical-align: middle;
+  border-top: 1px solid #eee;
 }
 
-.button-wrapper {
-  margin-top: 10px;
+/* left column (dish info) */
+.dish-name { font-size: 1.05rem; margin: 0 0 6px; }
+.dish-price { color: #e91e63; font-weight: 700; margin: 0 0 6px; }
+.dish-desc { color: #666; margin: 0; font-size: 0.95rem; }
+
+/* right column: preview area */
+.preview-cell {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  align-items: center;
 }
 
-.rotate-btn {
-  font-size: 2em;
-  padding: 10px;
-  background: #e91e63;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+/* preview wrapper for each small A-Frame scene */
+.preview-box {
+  width: 220px;
+  height: 180px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  overflow: hidden;
   cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preview-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
 }
 
-#exit-ar-btn {
+/* small embedded a-scene fills preview-box */
+.preview-box a-scene {
+  width: 100%;
+  height: 100%;
+}
+
+/* modal styles */
+.modal {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #333;
-  color: white;
-  padding: 10px 15px;
-  border: none;
+  inset: 0;
   display: none;
-  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  padding: 24px;
+}
+.modal[aria-hidden="false"] { display: flex; }
+
+.modal-inner {
+  width: 100%;
+  max-width: 920px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 0;
+}
+
+/* modal info column */
+.modal-info {
+  padding: 18px 22px;
+  background: linear-gradient(180deg,#fff,#fafafa);
+}
+.modal-info h2 { margin: 0 0 8px; font-size: 1.3rem; }
+.modal-info .price { color: #e91e63; font-weight: 700; margin: 8px 0; }
+.modal-info p { margin: 6px 0 0; color: #444; }
+
+/* modal right: big scene */
+.modal-scene {
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f7fb;
+}
+
+/* close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .modal-inner { grid-template-columns: 1fr; }
+  .modal-scene { min-height: 360px; }
+  .preview-box { width: 180px; height: 150px; }
+}
+
+@media (max-width: 560px) {
+  .wrap { padding: 12px; }
+  .preview-box { width: 140px; height: 120px; }
+  .top-header h1 { font-size: 1.2rem; }
 }
