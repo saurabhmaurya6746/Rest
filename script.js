@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       model: 'assets/burger_tripo.glb',
       scale: '20 20 20',
       rotation: '0 180 0',
-      thumb: 'assets/thumb_burger.jpg'
+      thumb: 'assest/thumb_burger.jpg'
     },
     // },
     // {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: '🍕 Cheesy Pizza',
       price: '₹299',
       desc: 'Thin crust pizza with melted mozzarella, tangy tomato sauce, and herbs.',
-      model: 'assets/pizza.glb',
+      model: 'assest/pizza.glb',
       scale: '8 8 8',
       rotation: '-25 0 0',
       thumb: 'assets/thumb_pizza.jpg'
@@ -373,3 +373,4 @@ function closeModal() {
   renderMenu();
 
 });
+
