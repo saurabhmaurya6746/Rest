@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: '🍔 Classic Cheeseburger',
       price: '₹199',
       desc: 'Juicy beef patty, melted cheese, fresh lettuce & tomato served on a toasted bun.',
-      model: 'assest/burger_tripo.glb',
+      model: 'assest/burger_tripo-v2.glb',
       scale: '20 20 20',
       rotation: '0 180 0',
       thumb: 'assest/thumb_burger.jpg'
@@ -373,5 +373,6 @@ function closeModal() {
   renderMenu();
 
 });
+
 
 
