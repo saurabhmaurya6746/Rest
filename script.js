@@ -44,6 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
       rotation: '-25 0 0',
       thumb: 'assets/thumb_pizza.jpg'
     } 
+    ,
+    {
+      id: 'model4',
+      title: 'Noodels ',
+      price: '₹299',
+      desc: 'Thin crust noodles with melted mozzarella, tangy tomato sauce, and herbs.',
+      model: 'assest/Noodles.glb',
+      scale: '8 8 8',
+      rotation: '-25 0 0',
+      thumb: 'assets/thumb_pizza.jpg'
+    } 
   ];
   // ------------------
 
@@ -373,6 +384,7 @@ function closeModal() {
   renderMenu();
 
 });
+
 
 
 
