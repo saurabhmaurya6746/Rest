@@ -1,74 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Restaurant AR Menu</title>
+  <title>Blossom House — AR Menu</title>
 
-  <!-- A-Frame -->
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <!-- Google model-viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Top header / about -->
-  <header class="top-header">
-    <div class="wrap">
-      <h1>🍽️ Blossom House — AR Menu</h1>
-      <p class="tag">Tap any dish preview to open full 3D / AR viewer</p>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <div class="brand">
+        <span class="logo">🍽️</span>
+        <div>
+          <h1>Blossom House — AR Menu</h1>
+          <p class="subtitle">Tap any dish preview to open full 3D / AR viewer.</p>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Main content -->
-  <main class="wrap">
-    <section class="menu-section">
-      <table class="menu-table" id="menuTable">
-        <thead>
-          <tr>
-            <th>Dish</th>
-            <th>Preview</th>
-          </tr>
-        </thead>
-        <tbody id="menuBody">
-          <!-- Rows injected by JS -->
-        </tbody>
-      </table>
-    </section>
+  <main class="container">
+    <div class="list-card">
+      <div class="list-head">
+        <div>Dish</div>
+        <div class="right">Preview</div>
+      </div>
+      <div id="dishList" class="list-body"></div>
+    </div>
   </main>
 
-  <!-- Modal / Popup for full 3D viewer -->
-  <div id="viewerModal" class="modal" aria-hidden="true">
-    <div class="modal-inner">
-      <button id="modalClose" class="modal-close" aria-label="Close">✖</button>
-      <div class="modal-info">
-        <h2 id="modalTitle">Dish</h2>
-        <p id="modalPrice" class="price"></p>
-        <p id="modalDesc"></p>
+  <!-- Modal -->
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-sheet" role="document">
+      <button class="icon-btn close" id="closeModal" aria-label="Close">✕</button>
+
+      <div class="mv-wrap">
+        <model-viewer
+          id="mv"
+          ar
+          ar-modes="webxr scene-viewer"
+          camera-controls
+          auto-rotate
+          environment-image="neutral"
+          exposure="1"
+          shadow-intensity="1"
+          style="width:100%;height:58vh;background:#f3f3f5;border-radius:14px;"
+        ></model-viewer>
       </div>
 
-      <!-- A-Frame scene for modal -->
-      <div class="modal-scene">
-       <a-scene id="modalScene" embedded vr-mode-ui="enabled: true" background="color: #f8f8f8">
-  <a-assets id="modalAssets"></a-assets>
-
-  <!-- Lights -->
-  <a-entity light="type: ambient; intensity: 1.3"></a-entity>
-  <a-entity light="type: directional; intensity: 3" position="1 2 1"></a-entity>
-  <a-entity light="type: point; intensity: 2" position="-1 1 1"></a-entity>
-
-  <!-- Model holder -->
-  <a-entity id="modalModelHolder" position="0 0 0"></a-entity>
-
-  <!-- ✅ Always active camera -->
-  <a-entity id="modalCamera" camera look-controls="false" position="0 1.6 3"></a-entity>
-</a-scene>
-
+      <div class="modal-info">
+        <div class="meta">
+          <h2 id="mTitle">Dish title</h2>
+          <p id="mDesc" class="muted">Description…</p>
+        </div>
+        <div class="meta-right">
+          <div id="mPrice" class="price">₹0</div>
+          <div class="btn-row">
+            <button id="arBtn" class="btn">Place on table (AR)</button>
+            <button id="rotateBtn" class="btn outline">Stop</button>
+            <button id="addBtn" class="btn success">Add to cart</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
