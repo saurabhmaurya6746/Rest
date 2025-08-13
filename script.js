@@ -8,7 +8,7 @@ const dishes = [
     title: 'Classic Cheeseburger',
     price: 199,
     desc: 'Juicy beef patty, melted cheese, fresh lettuce & tomato on a toasted bun.',
-    glb: 'assets/burger.glb'
+    glb: 'assest/burger_tripo-v2.glb'
   },
   {
     id: 'chowmein',
@@ -135,3 +135,4 @@ addBtn.addEventListener('click', () => {
   addBtn.textContent = 'Added!';
   setTimeout(() => addBtn.textContent = 'Add to cart', 1200);
 });
+
